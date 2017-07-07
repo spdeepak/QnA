@@ -11,12 +11,11 @@ import javax.persistence.Id;
 @Entity
 public class Question {
 
-    @Id
-    @GeneratedValue
-    private long id;
+	@Id
+	@GeneratedValue
+	private long id;
 
-    private long version;
+	private long version;
 
-    private String question;
-
+	private String question;
 }

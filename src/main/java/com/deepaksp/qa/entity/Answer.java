@@ -24,4 +24,5 @@ public class Answer {
 
 	@OneToOne(fetch = FetchType.EAGER)
 	private User user;
+
 }
