@@ -27,4 +27,36 @@ public class Question {
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Set<QuestionComment> comments = new HashSet();
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public long getVersion() {
+		return version;
+	}
+
+	public void setVersion(long version) {
+		this.version = version;
+	}
+
+	public String getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(String question) {
+		this.question = question;
+	}
+
+	public Set<QuestionComment> getComments() {
+		return comments;
+	}
+
+	public void setComments(Set<QuestionComment> comments) {
+		this.comments = comments;
+	}
 }

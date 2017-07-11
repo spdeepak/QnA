@@ -15,4 +15,12 @@ public class QuestionComment extends Comment {
 	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "comments")
 	private Question question;
+
+	public Question getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(Question question) {
+		this.question = question;
+	}
 }
