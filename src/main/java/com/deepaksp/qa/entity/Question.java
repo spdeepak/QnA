@@ -1,8 +1,14 @@
 package com.deepaksp.qa.entity;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  * @author Deepak
@@ -18,4 +24,7 @@ public class Question {
 	private long version;
 
 	private String question;
+
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private Set<QuestionComment> comments = new HashSet();
 }
