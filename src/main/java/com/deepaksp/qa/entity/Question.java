@@ -8,8 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  * @author Deepak
@@ -27,8 +27,19 @@ public class Question {
 	private String question;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "question")
 	private Set<QuestionComment> comments = new HashSet();
+
+	@OneToOne(fetch = FetchType.EAGER)
+	private User creator;
+
+	@OneToMany(fetch = FetchType.LAZY)
+	private Set<User> followers = new HashSet<>();
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<QuestionUpvote> upvotes = new HashSet<>();
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<QuestionDownvote> downvotes = new HashSet<>();
 
 	public long getId() {
 		return id;
@@ -60,5 +71,37 @@ public class Question {
 
 	public void setComments(Set<QuestionComment> comments) {
 		this.comments = comments;
+	}
+
+	public User getCreator() {
+		return creator;
+	}
+
+	public void setCreator(User creator) {
+		this.creator = creator;
+	}
+
+	public Set<QuestionUpvote> getUpvotes() {
+		return upvotes;
+	}
+
+	public void setUpvotes(Set<QuestionUpvote> upvotes) {
+		this.upvotes = upvotes;
+	}
+
+	public Set<QuestionDownvote> getDownvotes() {
+		return downvotes;
+	}
+
+	public void setDownvotes(Set<QuestionDownvote> downvotes) {
+		this.downvotes = downvotes;
+	}
+
+	public Set<User> getFollowers() {
+		return followers;
+	}
+
+	public void setFollowers(Set<User> followers) {
+		this.followers = followers;
 	}
 }

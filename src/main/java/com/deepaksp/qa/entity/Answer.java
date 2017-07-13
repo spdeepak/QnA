@@ -8,7 +8,6 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -32,8 +31,13 @@ public class Answer {
 	private User user;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	@JoinColumn(name = "answer")
 	private Set<AnswerComment> comments = new HashSet();
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<AnswerUpvote> upvotes = new HashSet<>();
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<AnswerDownvote> downvotes = new HashSet<>();
 
 	public long getId() {
 		return id;
@@ -73,6 +77,22 @@ public class Answer {
 
 	public void setComments(Set<AnswerComment> comments) {
 		this.comments = comments;
+	}
+
+	public Set<AnswerUpvote> getUpvotes() {
+		return upvotes;
+	}
+
+	public void setUpvotes(Set<AnswerUpvote> upvotes) {
+		this.upvotes = upvotes;
+	}
+
+	public Set<AnswerDownvote> getDownvotes() {
+		return downvotes;
+	}
+
+	public void setDownvotes(Set<AnswerDownvote> downvotes) {
+		this.downvotes = downvotes;
 	}
 
 }

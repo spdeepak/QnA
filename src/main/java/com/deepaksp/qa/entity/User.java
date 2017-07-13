@@ -1,8 +1,8 @@
 package com.deepaksp.qa.entity;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -38,10 +38,13 @@ public class User {
 	private Date dateOfBirth;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<Question> askQuestions = new ArrayList<>();
+	private Set<Question> askedQuestions = new HashSet();
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<Question> followQuestions = new ArrayList<>();
+	private Set<Question> followingQuestions = new HashSet<>();
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Set<Answer> answers = new HashSet();
 
 	public long getId() {
 		return id;
@@ -99,20 +102,28 @@ public class User {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-	public List<Question> getAskQuestions() {
-		return askQuestions;
+	public Set<Question> getAskedQuestions() {
+		return askedQuestions;
 	}
 
-	public void setAskQuestions(List<Question> askQuestions) {
-		this.askQuestions = askQuestions;
+	public void setAskedQuestions(Set<Question> askedQuestions) {
+		this.askedQuestions = askedQuestions;
 	}
 
-	public List<Question> getFollowQuestions() {
-		return followQuestions;
+	public Set<Question> getFollowingQuestions() {
+		return followingQuestions;
 	}
 
-	public void setFollowQuestions(List<Question> followQuestions) {
-		this.followQuestions = followQuestions;
+	public void setFollowingQuestions(Set<Question> followingQuestions) {
+		this.followingQuestions = followingQuestions;
+	}
+
+	public Set<Answer> getAnswers() {
+		return answers;
+	}
+
+	public void setAnswers(Set<Answer> answers) {
+		this.answers = answers;
 	}
 
 }
