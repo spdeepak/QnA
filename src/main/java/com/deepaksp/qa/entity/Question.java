@@ -41,6 +41,9 @@ public class Question {
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<QuestionDownvote> downvotes = new HashSet<>();
 
+	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	private Set<Topic> topics = new HashSet<>();
+
 	public long getId() {
 		return id;
 	}
@@ -103,5 +106,13 @@ public class Question {
 
 	public void setFollowers(Set<User> followers) {
 		this.followers = followers;
+	}
+
+	public Set<Topic> getTopics() {
+		return topics;
+	}
+
+	public void setTopics(Set<Topic> topics) {
+		this.topics = topics;
 	}
 }

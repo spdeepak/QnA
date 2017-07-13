@@ -1,7 +1,5 @@
 package com.deepaksp.qa.entity.interfaces;
 
-import java.util.Set;
-
 import com.deepaksp.qa.entity.User;
 
 /**
@@ -14,8 +12,8 @@ public interface Vote {
 
 	public void setId(long id);
 
-	public Set<User> getUsers();
+	public User getUser();
 
-	public void setUsers(Set<User> users);
+	public void setUser(User user);
 
 }

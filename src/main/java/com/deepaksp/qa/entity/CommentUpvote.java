@@ -13,7 +13,7 @@ import com.deepaksp.qa.entity.interfaces.Vote;
  *
  */
 @Entity
-public class QuestionDownvote implements Vote {
+public class CommentUpvote implements Vote {
 
 	@Id
 	@GeneratedValue

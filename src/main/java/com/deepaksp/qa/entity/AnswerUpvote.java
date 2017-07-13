@@ -1,13 +1,10 @@
 package com.deepaksp.qa.entity;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import com.deepaksp.qa.entity.interfaces.Vote;
 
@@ -22,8 +19,8 @@ public class AnswerUpvote implements Vote {
 	@GeneratedValue
 	private long id;
 
-	@OneToMany(fetch = FetchType.EAGER)
-	private Set<User> users = new HashSet<>();
+	@OneToOne(fetch = FetchType.EAGER)
+	private User user;
 
 	@Override
 	public long getId() {
@@ -36,12 +33,12 @@ public class AnswerUpvote implements Vote {
 	}
 
 	@Override
-	public Set<User> getUsers() {
-		return users;
+	public User getUser() {
+		return user;
 	}
 
 	@Override
-	public void setUsers(Set<User> users) {
-		this.users = users;
+	public void setUser(User user) {
+		this.user = user;
 	}
 }

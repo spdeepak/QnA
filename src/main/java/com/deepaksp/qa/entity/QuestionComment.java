@@ -1,9 +1,16 @@
 package com.deepaksp.qa.entity;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.deepaksp.qa.entity.interfaces.Comment;
@@ -13,7 +20,7 @@ import com.deepaksp.qa.entity.interfaces.Comment;
  *
  */
 @Entity
-public class QuestionComment implements Comment {
+public class QuestionComment implements Comment<QuestionComment> {
 
 	@Id
 	@GeneratedValue
@@ -25,6 +32,18 @@ public class QuestionComment implements Comment {
 
 	@OneToOne(fetch = FetchType.EAGER)
 	private Question question;
+
+	@OneToOne(fetch = FetchType.EAGER)
+	private User user;
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<QuestionComment> comments = new ArrayList<>();
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<CommentUpvote> upvotes = new HashSet<>();
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<CommentDownvote> downvotes = new HashSet<>();
 
 	public Question getQuestion() {
 		return question;
@@ -62,5 +81,45 @@ public class QuestionComment implements Comment {
 	@Override
 	public void setComment(String comment) {
 		Comment = comment;
+	}
+
+	@Override
+	public User getUser() {
+		return user;
+	}
+
+	@Override
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	@Override
+	public List<QuestionComment> getComments() {
+		return comments;
+	}
+
+	@Override
+	public void setComments(List<QuestionComment> comments) {
+		this.comments = comments;
+	}
+
+	@Override
+	public Set<CommentUpvote> getUpvotes() {
+		return upvotes;
+	}
+
+	@Override
+	public void setUpvotes(Set<CommentUpvote> upvotes) {
+		this.upvotes = upvotes;
+	}
+
+	@Override
+	public Set<CommentDownvote> getDownvotes() {
+		return downvotes;
+	}
+
+	@Override
+	public void setDownvotes(Set<CommentDownvote> downvotes) {
+		this.downvotes = downvotes;
 	}
 }

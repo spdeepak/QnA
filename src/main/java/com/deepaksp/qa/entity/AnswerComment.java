@@ -1,9 +1,16 @@
 package com.deepaksp.qa.entity;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.deepaksp.qa.entity.interfaces.Comment;
@@ -13,7 +20,7 @@ import com.deepaksp.qa.entity.interfaces.Comment;
  *
  */
 @Entity
-public class AnswerComment implements Comment {
+public class AnswerComment implements Comment<AnswerComment> {
 
 	@Id
 	@GeneratedValue
@@ -25,6 +32,18 @@ public class AnswerComment implements Comment {
 
 	@OneToOne(fetch = FetchType.EAGER)
 	private Answer answer;
+
+	@OneToOne(fetch = FetchType.EAGER)
+	private User user;
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<AnswerComment> comments = new ArrayList<>();
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<CommentUpvote> upvotes = new HashSet<>();
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private Set<CommentDownvote> downvotes = new HashSet<>();
 
 	public Answer getAnswer() {
 		return answer;
@@ -64,4 +83,43 @@ public class AnswerComment implements Comment {
 		Comment = comment;
 	}
 
+	@Override
+	public User getUser() {
+		return user;
+	}
+
+	@Override
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	@Override
+	public List<AnswerComment> getComments() {
+		return comments;
+	}
+
+	@Override
+	public void setComments(List<AnswerComment> comments) {
+		this.comments = comments;
+	}
+
+	@Override
+	public Set<CommentUpvote> getUpvotes() {
+		return upvotes;
+	}
+
+	@Override
+	public void setUpvotes(Set<CommentUpvote> upvotes) {
+		this.upvotes = upvotes;
+	}
+
+	@Override
+	public Set<CommentDownvote> getDownvotes() {
+		return downvotes;
+	}
+
+	@Override
+	public void setDownvotes(Set<CommentDownvote> downvotes) {
+		this.downvotes = downvotes;
+	}
 }
