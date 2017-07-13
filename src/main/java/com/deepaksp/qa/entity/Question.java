@@ -27,7 +27,7 @@ public class Question {
 	private String question;
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-	private Set<QuestionComment> comments = new HashSet();
+	private Set<QuestionComment> comments = new HashSet<>();
 
 	@OneToOne(fetch = FetchType.EAGER)
 	private User creator;

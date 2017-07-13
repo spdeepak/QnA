@@ -2,6 +2,8 @@ package com.deepaksp.qa.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
 import com.deepaksp.qa.entity.interfaces.Comment;
@@ -13,6 +15,8 @@ import com.deepaksp.qa.entity.interfaces.Comment;
 @Entity
 public class AnswerComment implements Comment {
 
+	@Id
+	@GeneratedValue
 	private long id;
 
 	private long version;

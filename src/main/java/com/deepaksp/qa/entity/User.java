@@ -38,13 +38,13 @@ public class User {
 	private Date dateOfBirth;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Set<Question> askedQuestions = new HashSet();
+	private Set<Question> askedQuestions = new HashSet<>();
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Set<Question> followingQuestions = new HashSet<>();
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private Set<Answer> answers = new HashSet();
+	private Set<Answer> answers = new HashSet<>();
 
 	public long getId() {
 		return id;
