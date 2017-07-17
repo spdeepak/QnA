@@ -1,5 +1,7 @@
 package com.deepaksp.qa.entity.repository;
 
+import java.util.List;
+
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
@@ -8,4 +10,7 @@ import com.deepaksp.qa.entity.Question;
 @Repository
 public interface QuestionRepository extends PagingAndSortingRepository<Question, Long> {
 
+	public List<Question> findByQuestionContainsIgnoreCase(String question);
+
+	public List<Question> findByTopicsName(String topicName);
 }

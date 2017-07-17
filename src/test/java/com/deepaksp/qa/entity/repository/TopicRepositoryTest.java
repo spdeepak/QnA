@@ -1,5 +1,7 @@
 package com.deepaksp.qa.entity.repository;
 
+import static org.junit.Assert.assertEquals;
+
 import javax.annotation.Resource;
 
 import org.junit.Test;
@@ -16,15 +18,26 @@ public class TopicRepositoryTest {
 	@Resource
 	private TopicRepository topicRepository;
 
-	@Test
-	public void test() {
+	private void populateDate() {
 		Topic topic = new Topic();
 		topic.setName("Leverton");
 		topic.setDescription("Builds a machine learning tool using AI to read lease documents");
 		topicRepository.save(topic);
-		System.out.println(topic.getId());
-		System.out.println(topic.getName());
-		System.out.println(topic.getDescription());
+	}
+
+	@Test
+	public void testFindByName() {
+		populateDate();
+		Topic topic = topicRepository.findByNameIgnoreCase("leverton").get(0);
+		assertEquals("Builds a machine learning tool using AI to read lease documents", topic.getDescription());
+	}
+
+	@Test
+	public void testFindByDescriptionContains() {
+		populateDate();
+		Topic topic = topicRepository.findByDescriptionContainsIgnoreCase("machine LEARNING").get(0);
+		assertEquals("Builds a machine learning tool using AI to read lease documents", topic.getDescription());
+		assertEquals("Leverton", topic.getName());
 	}
 
 }
