@@ -10,27 +10,37 @@
 	<div th:replace="fragments/header :: header"></div>
 	<div class="container">
 		<ul class="nav nav-tabs">
-			<li class="active"><a href="#1a" data-toggle="tab">Questions</a></li>
-			<li><a href="#1b" data-toggle="tab">Latest</a></li>
+			<li class="active"><a href="#questions" data-toggle="tab">Questions</a></li>
+			<li><a href="#latest" data-toggle="tab">Latest</a></li>
 		</ul>
 		<div class="tab-content clearfix">
-			<div class="tab-pane active" id="1a">
-				<table id="1a" class="table table-striped">
+			<div class="tab-pane active" id="questions">
+				<table id="questions" class="table table-striped">
 					<tbody>
 						<th:block th:each="q: ${questions}">
 							<tr>
 								<td th:text="${q.question}"></td>
+								<td>
+									<div class="row-area" th:each="t: ${q.topics}">
+										<span class="col-md-1" th:text="${t.name}">Dummy Data</span>
+									</div>
+								</td>
 							</tr>
 						</th:block>
 					</tbody>
 				</table>
 			</div>
-			<div class="tab-pane" id="1b">
-				<table id="1b" class="table table-striped">
+			<div class="tab-pane" id="latest">
+				<table id="latest" class="table table-striped">
 					<tbody>
 						<th:block th:each="l: ${latest}">
 							<tr>
 								<td th:text="${l.question}"></td>
+								<td>
+									<div class="row-area" th:each="t: ${l.topics}">
+										<span class="col-md-1" th:text="${t.name}">Dummy Data</span>
+									</div>
+								</td>
 							</tr>
 						</th:block>
 					</tbody>
