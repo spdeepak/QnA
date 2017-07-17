@@ -1,0 +1,1 @@
+insert into question (question,created_date,version) values ('First ever question','2017-07-17 15:58:00',1);

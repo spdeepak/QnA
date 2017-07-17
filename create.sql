@@ -1,34 +1,34 @@
-create table answer (id bigint not null auto_increment, version bigint not null, question_id bigint, user_id bigint, primary key (id))
-create table answer_comments (answer_id bigint not null, comments_id bigint not null)
-create table answer_downvotes (answer_id bigint not null, downvotes_id bigint not null, primary key (answer_id, downvotes_id))
-create table answer_upvotes (answer_id bigint not null, upvotes_id bigint not null, primary key (answer_id, upvotes_id))
-create table answer_comment (id bigint not null auto_increment, comment varchar(255), version bigint not null, answer_id bigint, user_id bigint, primary key (id))
-create table answer_comment_comments (answer_comment_id bigint not null, comments_id bigint not null)
-create table answer_comment_downvotes (answer_comment_id bigint not null, downvotes_id bigint not null, primary key (answer_comment_id, downvotes_id))
-create table answer_comment_upvotes (answer_comment_id bigint not null, upvotes_id bigint not null, primary key (answer_comment_id, upvotes_id))
-create table answer_downvote (id bigint not null auto_increment, user_id bigint, primary key (id))
-create table answer_upvote (id bigint not null auto_increment, user_id bigint, primary key (id))
-create table comment_downvote (id bigint not null auto_increment, user_id bigint, primary key (id))
-create table comment_upvote (id bigint not null auto_increment, user_id bigint, primary key (id))
-create table question (id bigint not null auto_increment, question varchar(255), version bigint not null, creator_id bigint, primary key (id))
-create table question_comments (question_id bigint not null, comments_id bigint not null, primary key (question_id, comments_id))
-create table question_downvotes (question_id bigint not null, downvotes_id bigint not null, primary key (question_id, downvotes_id))
-create table question_followers (question_id bigint not null, followers_id bigint not null, primary key (question_id, followers_id))
-create table question_topics (question_id bigint not null, topics_id bigint not null, primary key (question_id, topics_id))
-create table question_upvotes (question_id bigint not null, upvotes_id bigint not null, primary key (question_id, upvotes_id))
-create table question_comment (id bigint not null auto_increment, comment varchar(255), version bigint not null, question_id bigint, user_id bigint, primary key (id))
-create table question_comment_comments (question_comment_id bigint not null, comments_id bigint not null)
-create table question_comment_downvotes (question_comment_id bigint not null, downvotes_id bigint not null, primary key (question_comment_id, downvotes_id))
-create table question_comment_upvotes (question_comment_id bigint not null, upvotes_id bigint not null, primary key (question_comment_id, upvotes_id))
-create table question_downvote (id bigint not null auto_increment, user_id bigint, primary key (id))
-create table question_upvote (id bigint not null auto_increment, user_id bigint, primary key (id))
-create table topic (id bigint not null auto_increment, description varchar(255), name varchar(255), version bigint not null, primary key (id))
-create table user (id bigint not null auto_increment, date_of_birth datetime, email varchar(255), first_name varchar(255), last_name varchar(255), middle_name varchar(255), version bigint not null, primary key (id))
-create table user_answer_comments (user_id bigint not null, answer_comments_id bigint not null)
-create table user_answers (user_id bigint not null, answers_id bigint not null, primary key (user_id, answers_id))
-create table user_asked_questions (user_id bigint not null, asked_questions_id bigint not null, primary key (user_id, asked_questions_id))
-create table user_following_questions (user_id bigint not null, following_questions_id bigint not null, primary key (user_id, following_questions_id))
-create table user_question_comments (user_id bigint not null, question_comments_id bigint not null)
+create table answer (id bigint not null auto_increment, created_date datetime(6), version bigint not null, question_id bigint, user_id bigint, primary key (id)) ENGINE=InnoDB
+create table answer_comments (answer_id bigint not null, comments_id bigint not null) ENGINE=InnoDB
+create table answer_downvotes (answer_id bigint not null, downvotes_id bigint not null, primary key (answer_id, downvotes_id)) ENGINE=InnoDB
+create table answer_upvotes (answer_id bigint not null, upvotes_id bigint not null, primary key (answer_id, upvotes_id)) ENGINE=InnoDB
+create table answer_comment (id bigint not null auto_increment, comment varchar(255), created_date datetime(6), version bigint not null, answer_id bigint, user_id bigint, primary key (id)) ENGINE=InnoDB
+create table answer_comment_comments (answer_comment_id bigint not null, comments_id bigint not null) ENGINE=InnoDB
+create table answer_comment_downvotes (answer_comment_id bigint not null, downvotes_id bigint not null, primary key (answer_comment_id, downvotes_id)) ENGINE=InnoDB
+create table answer_comment_upvotes (answer_comment_id bigint not null, upvotes_id bigint not null, primary key (answer_comment_id, upvotes_id)) ENGINE=InnoDB
+create table answer_downvote (id bigint not null auto_increment, user_id bigint, primary key (id)) ENGINE=InnoDB
+create table answer_upvote (id bigint not null auto_increment, user_id bigint, primary key (id)) ENGINE=InnoDB
+create table comment_downvote (id bigint not null auto_increment, user_id bigint, primary key (id)) ENGINE=InnoDB
+create table comment_upvote (id bigint not null auto_increment, user_id bigint, primary key (id)) ENGINE=InnoDB
+create table question (id bigint not null auto_increment, created_date datetime(6), question varchar(255), version bigint not null, creator_id bigint, primary key (id)) ENGINE=InnoDB
+create table question_comments (question_id bigint not null, comments_id bigint not null, primary key (question_id, comments_id)) ENGINE=InnoDB
+create table question_downvotes (question_id bigint not null, downvotes_id bigint not null, primary key (question_id, downvotes_id)) ENGINE=InnoDB
+create table question_followers (question_id bigint not null, followers_id bigint not null, primary key (question_id, followers_id)) ENGINE=InnoDB
+create table question_topics (question_id bigint not null, topics_id bigint not null, primary key (question_id, topics_id)) ENGINE=InnoDB
+create table question_upvotes (question_id bigint not null, upvotes_id bigint not null, primary key (question_id, upvotes_id)) ENGINE=InnoDB
+create table question_comment (id bigint not null auto_increment, comment varchar(255), created_date datetime(6), version bigint not null, question_id bigint, user_id bigint, primary key (id)) ENGINE=InnoDB
+create table question_comment_comments (question_comment_id bigint not null, comments_id bigint not null) ENGINE=InnoDB
+create table question_comment_downvotes (question_comment_id bigint not null, downvotes_id bigint not null, primary key (question_comment_id, downvotes_id)) ENGINE=InnoDB
+create table question_comment_upvotes (question_comment_id bigint not null, upvotes_id bigint not null, primary key (question_comment_id, upvotes_id)) ENGINE=InnoDB
+create table question_downvote (id bigint not null auto_increment, user_id bigint, primary key (id)) ENGINE=InnoDB
+create table question_upvote (id bigint not null auto_increment, user_id bigint, primary key (id)) ENGINE=InnoDB
+create table topic (id bigint not null auto_increment, description varchar(255), name varchar(255), version bigint not null, primary key (id)) ENGINE=InnoDB
+create table user (id bigint not null auto_increment, date_of_birth datetime(6), email varchar(255), first_name varchar(255), last_name varchar(255), middle_name varchar(255), version bigint not null, primary key (id)) ENGINE=InnoDB
+create table user_answer_comments (user_id bigint not null, answer_comments_id bigint not null) ENGINE=InnoDB
+create table user_answers (user_id bigint not null, answers_id bigint not null, primary key (user_id, answers_id)) ENGINE=InnoDB
+create table user_asked_questions (user_id bigint not null, asked_questions_id bigint not null, primary key (user_id, asked_questions_id)) ENGINE=InnoDB
+create table user_following_questions (user_id bigint not null, following_questions_id bigint not null, primary key (user_id, following_questions_id)) ENGINE=InnoDB
+create table user_question_comments (user_id bigint not null, question_comments_id bigint not null) ENGINE=InnoDB
 alter table answer_comments add constraint UK_jbfl62ab39e1jo0iyhc48fdtd unique (comments_id)
 alter table answer_downvotes add constraint UK_oojqgidho1inbe9akcvbqb7oc unique (downvotes_id)
 alter table answer_upvotes add constraint UK_3j7us6lywjanrpd6m585plkth unique (upvotes_id)
