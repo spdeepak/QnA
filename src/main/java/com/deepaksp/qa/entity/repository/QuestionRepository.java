@@ -1,5 +1,6 @@
 package com.deepaksp.qa.entity.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -13,4 +14,6 @@ public interface QuestionRepository extends PagingAndSortingRepository<Question,
 	public List<Question> findByQuestionContainsIgnoreCase(String question);
 
 	public List<Question> findByTopicsName(String topicName);
+
+	public List<Question> findByCreatedDate(Date date);
 }

@@ -1,6 +1,7 @@
 package com.deepaksp.qa.entity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -12,6 +13,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import com.deepaksp.qa.entity.interfaces.Comment;
 
@@ -44,6 +47,9 @@ public class AnswerComment implements Comment<AnswerComment> {
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<CommentDownvote> downvotes = new HashSet<>();
+
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date createdDate;
 
 	public Answer getAnswer() {
 		return answer;
@@ -121,5 +127,13 @@ public class AnswerComment implements Comment<AnswerComment> {
 	@Override
 	public void setDownvotes(Set<CommentDownvote> downvotes) {
 		this.downvotes = downvotes;
+	}
+
+	public Date getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
 	}
 }
