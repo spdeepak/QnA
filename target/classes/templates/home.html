@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>QnA System</title>
+<object th:include="fragments/header :: head" />
+</head>
+<body>
+	<div th:replace="fragments/header :: header"></div>
+	<div class="container">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#1a" data-toggle="tab">Questions</a></li>
+			<li><a href="#1b" data-toggle="tab">Latest</a></li>
+		</ul>
+		<div class="tab-content clearfix">
+			<div class="tab-pane active" id="1a">
+				<table id="1a" class="table table-striped">
+					<tbody>
+						<th:block th:each="q: ${questions}">
+							<tr>
+								<td th:text="${q.question}"></td>
+							</tr>
+						</th:block>
+					</tbody>
+				</table>
+			</div>
+			<div class="tab-pane" id="1b">
+				<table id="1b" class="table table-striped">
+					<tbody>
+						<th:block th:each="l: ${latest}">
+							<tr>
+								<td th:text="${l.question}"></td>
+							</tr>
+						</th:block>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
