@@ -16,4 +16,6 @@ public interface QuestionRepository extends PagingAndSortingRepository<Question,
 	public List<Question> findByTopicsName(String topicName);
 
 	public List<Question> findByCreatedDate(Date date);
+
+	public List<Question> findFirst10ByOrderByCreatedDate();
 }
