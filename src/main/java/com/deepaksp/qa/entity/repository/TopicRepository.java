@@ -7,6 +7,10 @@ import org.springframework.stereotype.Repository;
 
 import com.deepaksp.qa.entity.Topic;
 
+/**
+ * @author Deepak
+ *
+ */
 @Repository
 public interface TopicRepository extends PagingAndSortingRepository<Topic, Long> {
 

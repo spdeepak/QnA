@@ -8,6 +8,10 @@ import org.springframework.stereotype.Repository;
 
 import com.deepaksp.qa.entity.QuestionComment;
 
+/**
+ * @author Deepak
+ *
+ */
 @Repository
 public interface QuestionCommentRepository extends PagingAndSortingRepository<QuestionComment, Long> {
 

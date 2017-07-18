@@ -8,6 +8,10 @@ import org.springframework.stereotype.Repository;
 
 import com.deepaksp.qa.entity.Question;
 
+/**
+ * @author Deepak
+ *
+ */
 @Repository
 public interface QuestionRepository extends PagingAndSortingRepository<Question, Long> {
 
@@ -18,4 +22,6 @@ public interface QuestionRepository extends PagingAndSortingRepository<Question,
 	public List<Question> findByCreatedDate(Date date);
 
 	public List<Question> findFirst10ByOrderByCreatedDate();
+
+	public List<Question> findByCreatedDateBetween(Date date1, Date date2);
 }
