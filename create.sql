@@ -1,4 +1,4 @@
-create table answer (id bigint not null auto_increment, created_date datetime(6), version bigint not null, question_id bigint, user_id bigint, primary key (id)) ENGINE=InnoDB
+create table answer (id bigint not null auto_increment, answer varchar(255), created_date datetime(6), version bigint not null, question_id bigint, user_id bigint, primary key (id)) ENGINE=InnoDB
 create table answer_comments (answer_id bigint not null, comments_id bigint not null) ENGINE=InnoDB
 create table answer_downvotes (answer_id bigint not null, downvotes_id bigint not null, primary key (answer_id, downvotes_id)) ENGINE=InnoDB
 create table answer_upvotes (answer_id bigint not null, upvotes_id bigint not null, primary key (answer_id, upvotes_id)) ENGINE=InnoDB

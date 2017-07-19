@@ -47,6 +47,8 @@ public class Answer {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdDate;
 
+	private String answer;
+
 	public long getId() {
 		return id;
 	}
@@ -109,6 +111,14 @@ public class Answer {
 
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
+	}
+
+	public String getAnswer() {
+		return answer;
+	}
+
+	public void setAnswer(String answer) {
+		this.answer = answer;
 	}
 
 }

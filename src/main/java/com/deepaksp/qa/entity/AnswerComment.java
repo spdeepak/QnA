@@ -31,7 +31,7 @@ public class AnswerComment implements Comment<AnswerComment> {
 
 	private long version;
 
-	private String Comment;
+	private String comment;
 
 	@OneToOne(fetch = FetchType.EAGER)
 	private Answer answer;
@@ -81,12 +81,12 @@ public class AnswerComment implements Comment<AnswerComment> {
 
 	@Override
 	public String getComment() {
-		return Comment;
+		return comment;
 	}
 
 	@Override
 	public void setComment(String comment) {
-		Comment = comment;
+		this.comment = comment;
 	}
 
 	@Override

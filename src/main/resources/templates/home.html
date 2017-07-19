@@ -25,7 +25,7 @@
 									th:href="@{/question/{questionId}(questionId=${q.id})}"></a></td>
 								<td><th:block class="row-area text-lowercase small"
 										th:each="t: ${q.topics}">
-										<span class="label label-success" th:text="${t.name}"></span>
+										<span class="label label-primary" th:text="${t.name}"></span>
 									</th:block></td>
 							</tr>
 						</th:block>
@@ -40,7 +40,7 @@
 								<td><a th:text="${l.question}"
 									th:href="@{/question/{questionId}(questionId=${l.id})}"></a></td>
 								<td><th:block class="row-area" th:each="t: ${l.topics}">
-										<span class="label label-success" th:text="${t.name}"></span>
+										<span class="label label-primary" th:text="${t.name}"></span>
 									</th:block></td>
 							</tr>
 						</th:block>
@@ -55,7 +55,7 @@
 								<td><a th:text="${w.question}"
 									th:href="@{/question/{questionId}(questionId=${w.id})}"></a></td>
 								<td><th:block class="row-area" th:each="t: ${w.topics}">
-										<span class="label label-success" th:text="${t.name}"></span>
+										<span class="label label-primary" th:text="${t.name}"></span>
 									</th:block></td>
 							</tr>
 						</th:block>
@@ -70,7 +70,7 @@
 								<td><a th:text="${m.question}"
 									th:href="@{/question/{questionId}(questionId=${m.id})}"></a></td>
 								<td><th:block class="row-area" th:each="t: ${m.topics}">
-										<span class="label label-success" th:text="${t.name}"></span>
+										<span class="label label-primary" th:text="${t.name}"></span>
 									</th:block></td>
 							</tr>
 						</th:block>

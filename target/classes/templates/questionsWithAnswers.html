@@ -11,8 +11,16 @@
 	<div class="container">
 		<h1 th:text="${question.question}"></h1>
 		<th:block th:each="t: ${question.topics}">
-			<span class="label label-success" style="margin-right: 1px;"
+			<span class="label label-primary" style="margin-right: 1px;"
 				th:text="${t.name}"></span>
+		</th:block>
+		<th:block th:if="${question.answers.list != null}"
+			th:each="a: ${question.answers}">
+			<span th:text="${a.answer}"></span>
+			<th:block th:if="${a.comments.list ! =null }"
+				th:each="c: ${a.comments}">
+				<span th:text="${c.comment}"></span>
+			</th:block>
 		</th:block>
 	</div>
 </body>
