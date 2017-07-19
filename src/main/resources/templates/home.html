@@ -21,65 +21,57 @@
 					<tbody>
 						<th:block th:each="q: ${questions}">
 							<tr>
-								<td th:text="${q.question}"></td>
-								<td>
-									<div class="row-area text-lowercase small"
+								<td><a th:text="${q.question}"
+									th:href="@{/question/{questionId}(questionId=${q.id})}"></a></td>
+								<td><th:block class="row-area text-lowercase small"
 										th:each="t: ${q.topics}">
-										<span class="col-md-2 bg-primary" style="margin-right: 1px;"
-											th:text="${t.name}"></span>
-									</div>
-								</td>
+										<span class="label label-success" th:text="${t.name}"></span>
+									</th:block></td>
 							</tr>
 						</th:block>
 					</tbody>
 				</table>
 			</div>
 			<div class="tab-pane" id="latest">
-				<table id="latest" class="table table-striped">
+				<table id="latest" class="table">
 					<tbody>
 						<th:block th:each="l: ${latest}">
 							<tr>
-								<td th:text="${l.question}"></td>
-								<td>
-									<div class="row-area" th:each="t: ${l.topics}">
-										<span class="col-md-2 bg-primary" style="margin-right: 1px;"
-											th:text="${t.name}"></span>
-									</div>
-								</td>
+								<td><a th:text="${l.question}"
+									th:href="@{/question/{questionId}(questionId=${l.id})}"></a></td>
+								<td><th:block class="row-area" th:each="t: ${l.topics}">
+										<span class="label label-success" th:text="${t.name}"></span>
+									</th:block></td>
 							</tr>
 						</th:block>
 					</tbody>
 				</table>
 			</div>
 			<div class="tab-pane" id="week">
-				<table id="week" class="table table-striped">
+				<table id="week" class="table">
 					<tbody>
 						<th:block th:each="w: ${week}">
 							<tr>
-								<td th:text="${w.question}"></td>
-								<td>
-									<div class="row-area" th:each="t: ${w.topics}">
-										<span class="col-md-2 bg-primary" style="margin-right: 1px;"
-											th:text="${t.name}"></span>
-									</div>
-								</td>
+								<td><a th:text="${w.question}"
+									th:href="@{/question/{questionId}(questionId=${w.id})}"></a></td>
+								<td><th:block class="row-area" th:each="t: ${w.topics}">
+										<span class="label label-success" th:text="${t.name}"></span>
+									</th:block></td>
 							</tr>
 						</th:block>
 					</tbody>
 				</table>
 			</div>
 			<div class="tab-pane" id="month">
-				<table id="week" class="table table-striped">
+				<table id="week" class="table">
 					<tbody>
 						<th:block th:each="m: ${month}">
 							<tr>
-								<td th:text="${m.question}"></td>
-								<td>
-									<div class="row-area" th:each="t: ${m.topics}">
-										<span class="col-md-2 bg-primary" style="margin-right: 1px;"
-											th:text="${t.name}"></span>
-									</div>
-								</td>
+								<td><a th:text="${m.question}"
+									th:href="@{/question/{questionId}(questionId=${m.id})}"></a></td>
+								<td><th:block class="row-area" th:each="t: ${m.topics}">
+										<span class="label label-success" th:text="${t.name}"></span>
+									</th:block></td>
 							</tr>
 						</th:block>
 					</tbody>

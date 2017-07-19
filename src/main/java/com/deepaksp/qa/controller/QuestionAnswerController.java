@@ -11,7 +11,7 @@ import com.deepaksp.qa.entity.repository.AnswerRepository;
 import com.deepaksp.qa.entity.repository.QuestionRepository;
 
 /**
- * @author d.prabhakar
+ * @author Deepak
  *
  */
 @Controller
@@ -27,6 +27,6 @@ public class QuestionAnswerController {
 	public String goToQuestionPage(@PathVariable("questionId") Long questionId, Model model) {
 		Question question = questionRepository.findOne(questionId);
 		model.addAttribute("question", question);
-		return "questions";
+		return "questionsWithAnswers";
 	}
 }
