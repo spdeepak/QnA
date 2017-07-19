@@ -11,6 +11,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.deepaksp.qa.entity.Topic;
 
+/**
+ * @author Deepak
+ *
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class TopicRepositoryTest {

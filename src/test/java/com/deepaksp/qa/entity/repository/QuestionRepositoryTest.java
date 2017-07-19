@@ -11,6 +11,10 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.deepaksp.qa.util.DateUtil;
 
+/**
+ * @author Deepak
+ *
+ */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class QuestionRepositoryTest {
@@ -20,7 +24,8 @@ public class QuestionRepositoryTest {
 
 	@Test
 	public void testFindByCreatedDateBetween() {
-		System.out.println(questionRepository.findByCreatedDateBetweenOrderByCreatedDateDesc(DateUtil.pastMonth(), new Date()).size());
+		System.out.println(questionRepository
+				.findByCreatedDateBetweenOrderByCreatedDateDesc(DateUtil.pastMonth(), new Date()).size());
 		System.out.println(questionRepository.findByCreatedDateBeforeOrderByCreatedDateDesc(new Date()).size());
 	}
 
