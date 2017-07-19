@@ -12,6 +12,8 @@
 		<ul class="nav nav-tabs">
 			<li class="active"><a href="#questions" data-toggle="tab">Questions</a></li>
 			<li><a href="#latest" data-toggle="tab">Latest</a></li>
+			<li><a href="#week" data-toggle="tab">Week</a></li>
+			<li><a href="#month" data-toggle="tab">Month</a></li>
 		</ul>
 		<div class="tab-content clearfix">
 			<div class="tab-pane active" id="questions">
@@ -21,8 +23,10 @@
 							<tr>
 								<td th:text="${q.question}"></td>
 								<td>
-									<div class="row-area text-lowercase small" th:each="t: ${q.topics}">
-										<span class="col-md-2 bg-primary" style="margin-right:1px;" th:text="${t.name}"></span>
+									<div class="row-area text-lowercase small"
+										th:each="t: ${q.topics}">
+										<span class="col-md-2 bg-primary" style="margin-right: 1px;"
+											th:text="${t.name}"></span>
 									</div>
 								</td>
 							</tr>
@@ -38,7 +42,42 @@
 								<td th:text="${l.question}"></td>
 								<td>
 									<div class="row-area" th:each="t: ${l.topics}">
-										<span class="col-md-2 bg-primary" style="margin-right:1px;" th:text="${t.name}"></span>
+										<span class="col-md-2 bg-primary" style="margin-right: 1px;"
+											th:text="${t.name}"></span>
+									</div>
+								</td>
+							</tr>
+						</th:block>
+					</tbody>
+				</table>
+			</div>
+			<div class="tab-pane" id="week">
+				<table id="week" class="table table-striped">
+					<tbody>
+						<th:block th:each="w: ${week}">
+							<tr>
+								<td th:text="${w.question}"></td>
+								<td>
+									<div class="row-area" th:each="t: ${w.topics}">
+										<span class="col-md-2 bg-primary" style="margin-right: 1px;"
+											th:text="${t.name}"></span>
+									</div>
+								</td>
+							</tr>
+						</th:block>
+					</tbody>
+				</table>
+			</div>
+			<div class="tab-pane" id="month">
+				<table id="week" class="table table-striped">
+					<tbody>
+						<th:block th:each="m: ${month}">
+							<tr>
+								<td th:text="${m.question}"></td>
+								<td>
+									<div class="row-area" th:each="t: ${m.topics}">
+										<span class="col-md-2 bg-primary" style="margin-right: 1px;"
+											th:text="${t.name}"></span>
 									</div>
 								</td>
 							</tr>

@@ -23,5 +23,7 @@ public interface QuestionRepository extends PagingAndSortingRepository<Question,
 
 	public List<Question> findFirst10ByOrderByCreatedDate();
 
-	public List<Question> findByCreatedDateBetween(Date date1, Date date2);
+	public List<Question> findByCreatedDateBetweenOrderByCreatedDateDesc(Date fromDate, Date toDate);
+
+	public List<Question> findByCreatedDateBeforeOrderByCreatedDateDesc(Date fromDate);
 }
