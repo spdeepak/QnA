@@ -19,6 +19,8 @@ alter table answer_upvote drop foreign key FK442hcp3l2twi9s7a7mhral7e5
 alter table comment_downvote drop foreign key FKt2j7oytrekc1wvtf9wm009k5r
 alter table comment_upvote drop foreign key FKr96847mm8n3rydr9ua59137y0
 alter table question drop foreign key FK5x08j81rbrwxowo5l8c3236nv
+alter table question_answers drop foreign key FKnr1xcvup15w03kboejfervq1y
+alter table question_answers drop foreign key FKlglw0r110cw97aje0b0pa4q51
 alter table question_comments drop foreign key FK6brxdxc9snn4e27vm4su0qtpy
 alter table question_comments drop foreign key FK9uteqnot54x033kh2soej4jmw
 alter table question_downvotes drop foreign key FKam24xjwwwkpl203t3uvo165rx
@@ -62,6 +64,7 @@ drop table if exists answer_upvote
 drop table if exists comment_downvote
 drop table if exists comment_upvote
 drop table if exists question
+drop table if exists question_answers
 drop table if exists question_comments
 drop table if exists question_downvotes
 drop table if exists question_followers

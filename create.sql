@@ -11,6 +11,7 @@ create table answer_upvote (id bigint not null auto_increment, user_id bigint, p
 create table comment_downvote (id bigint not null auto_increment, user_id bigint, primary key (id)) ENGINE=InnoDB
 create table comment_upvote (id bigint not null auto_increment, user_id bigint, primary key (id)) ENGINE=InnoDB
 create table question (id bigint not null auto_increment, created_date datetime(6), question varchar(255), version bigint not null, creator_id bigint, primary key (id)) ENGINE=InnoDB
+create table question_answers (question_id bigint not null, answers_id bigint not null) ENGINE=InnoDB
 create table question_comments (question_id bigint not null, comments_id bigint not null, primary key (question_id, comments_id)) ENGINE=InnoDB
 create table question_downvotes (question_id bigint not null, downvotes_id bigint not null, primary key (question_id, downvotes_id)) ENGINE=InnoDB
 create table question_followers (question_id bigint not null, followers_id bigint not null, primary key (question_id, followers_id)) ENGINE=InnoDB
@@ -23,7 +24,7 @@ create table question_comment_upvotes (question_comment_id bigint not null, upvo
 create table question_downvote (id bigint not null auto_increment, user_id bigint, primary key (id)) ENGINE=InnoDB
 create table question_upvote (id bigint not null auto_increment, user_id bigint, primary key (id)) ENGINE=InnoDB
 create table topic (id bigint not null auto_increment, description varchar(255), name varchar(255), version bigint not null, primary key (id)) ENGINE=InnoDB
-create table user (id bigint not null auto_increment, date_of_birth datetime(6), email varchar(255), first_name varchar(255), last_name varchar(255), middle_name varchar(255), version bigint not null, primary key (id)) ENGINE=InnoDB
+create table user (id bigint not null auto_increment, date_of_birth date, email varchar(255), first_name varchar(255), last_name varchar(255), middle_name varchar(255), version bigint not null, primary key (id)) ENGINE=InnoDB
 create table user_answer_comments (user_id bigint not null, answer_comments_id bigint not null) ENGINE=InnoDB
 create table user_answers (user_id bigint not null, answers_id bigint not null, primary key (user_id, answers_id)) ENGINE=InnoDB
 create table user_asked_questions (user_id bigint not null, asked_questions_id bigint not null, primary key (user_id, asked_questions_id)) ENGINE=InnoDB
@@ -35,6 +36,7 @@ alter table answer_upvotes add constraint UK_3j7us6lywjanrpd6m585plkth unique (u
 alter table answer_comment_comments add constraint UK_999t4ntl1o67yhroic2d1xlal unique (comments_id)
 alter table answer_comment_downvotes add constraint UK_svp4qa1a5bcmsofcjo4wrxy6w unique (downvotes_id)
 alter table answer_comment_upvotes add constraint UK_pn6s51y433p056wt0vclse86u unique (upvotes_id)
+alter table question_answers add constraint UK_4qtn1pf4ea4ougou3ewipk9qx unique (answers_id)
 alter table question_comments add constraint UK_k5ul1a176ahw7033bfkuxc2ta unique (comments_id)
 alter table question_downvotes add constraint UK_pg360jb3op5xjtfqeemvq7vla unique (downvotes_id)
 alter table question_followers add constraint UK_pt2q87me4dhscxkulp2bv6n1n unique (followers_id)
@@ -43,6 +45,7 @@ alter table question_upvotes add constraint UK_gji5lxeox5c7asbj4e667j4tj unique 
 alter table question_comment_comments add constraint UK_9kqxhbhmhj4e1p5c1ctnjapnq unique (comments_id)
 alter table question_comment_downvotes add constraint UK_3cbmp57t5rhutdwr7ta5y5627 unique (downvotes_id)
 alter table question_comment_upvotes add constraint UK_9vlf5bf6ekye5fnr8rck21lss unique (upvotes_id)
+alter table user add constraint UK_ob8kqyqqgmefl0aco34akdtpe unique (email)
 alter table user_answer_comments add constraint UK_8rqecmqb7ng0bprscjp7y9o01 unique (answer_comments_id)
 alter table user_answers add constraint UK_drtyhwp6seekniluv1uo77d78 unique (answers_id)
 alter table user_asked_questions add constraint UK_gs5v7wqdb0y4hgy4u3pi1gnfp unique (asked_questions_id)
@@ -69,6 +72,8 @@ alter table answer_upvote add constraint FK442hcp3l2twi9s7a7mhral7e5 foreign key
 alter table comment_downvote add constraint FKt2j7oytrekc1wvtf9wm009k5r foreign key (user_id) references user (id)
 alter table comment_upvote add constraint FKr96847mm8n3rydr9ua59137y0 foreign key (user_id) references user (id)
 alter table question add constraint FK5x08j81rbrwxowo5l8c3236nv foreign key (creator_id) references user (id)
+alter table question_answers add constraint FKnr1xcvup15w03kboejfervq1y foreign key (answers_id) references answer (id)
+alter table question_answers add constraint FKlglw0r110cw97aje0b0pa4q51 foreign key (question_id) references question (id)
 alter table question_comments add constraint FK6brxdxc9snn4e27vm4su0qtpy foreign key (comments_id) references question_comment (id)
 alter table question_comments add constraint FK9uteqnot54x033kh2soej4jmw foreign key (question_id) references question (id)
 alter table question_downvotes add constraint FKam24xjwwwkpl203t3uvo165rx foreign key (downvotes_id) references question_downvote (id)

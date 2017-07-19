@@ -1,7 +1,9 @@
 package com.deepaksp.qa.entity;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -28,6 +30,9 @@ public class Question {
 	private long version;
 
 	private String question;
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Answer> answers = new ArrayList<>();
 
 	@OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private Set<QuestionComment> comments = new HashSet<>();
@@ -72,6 +77,14 @@ public class Question {
 
 	public void setQuestion(String question) {
 		this.question = question;
+	}
+
+	public List<Answer> getAnswers() {
+		return answers;
+	}
+
+	public void setAnswers(List<Answer> answers) {
+		this.answers = answers;
 	}
 
 	public Set<QuestionComment> getComments() {

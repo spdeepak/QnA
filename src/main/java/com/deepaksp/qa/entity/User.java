@@ -7,11 +7,14 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import org.hibernate.validator.constraints.Email;
 
@@ -35,8 +38,10 @@ public class User {
 	private String lastName;
 
 	@Email
+	@Column(unique = true)
 	private String email;
 
+	@Temporal(TemporalType.DATE)
 	private Date dateOfBirth;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
