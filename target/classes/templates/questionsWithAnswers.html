@@ -19,11 +19,26 @@
 		<div>
 			<th:block th:if="${not #lists.isEmpty(question.answers)}"
 				th:each="a: ${question.answers}">
-				<p th:inline="text"><strong>[[${a.user.firstName}]] [[${a.user.middleName}]] [[${a.user.lastName}]]</strong>, [[${a.user.description}]]</p>
-				<span th:text="${a.answer}"></span>
+				<p th:inline="text">
+					<strong>[[${a.user.getFullName()}]]</strong>,
+					[[${a.user.description}]] <br /> <span class="small">[[${#dates.format(a.createdDate,'HH:mm
+						dd MMM yyyy')}]]</span>
+				</p>
+				<p class="text-justify" th:text="${a.answer}"></p>
+
 				<th:block th:if="${not #lists.isEmpty(a.comments)}"
 					th:each="c: ${a.comments}">
-					<span th:text="${c.comment}"></span>
+					<div class="small bg-comment" style="padding: 1%">
+						<div class="col" th:inline="text">
+							<strong>[[${#strings.capitalize(a.user.userName)}]]</strong> <span
+								class="small">[[${#dates.format(c.createdDate,'HH:mm, dd
+								MMM yyyy')}]]</span>
+						</div>
+						<div th:inline="text">
+							[[${c.comment}]] <br /> <span class="text-warning">Reply
+								* Upvote * Downvote * Report</span>
+						</div>
+					</div>
 				</th:block>
 				<hr />
 			</th:block>

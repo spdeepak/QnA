@@ -48,6 +48,9 @@ public class User {
 	@NotNull
 	private String email;
 
+	@Column(unique = true)
+	private String userName;
+
 	@Temporal(TemporalType.DATE)
 	@NotNull
 	private Date dateOfBirth;
@@ -66,6 +69,10 @@ public class User {
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<AnswerComment> answerComments = new ArrayList<>();
+
+	public String getFullName() {
+		return this.firstName.concat(" ").concat(this.middleName).concat(" ").concat(this.lastName);
+	}
 
 	public long getId() {
 		return id;
@@ -121,6 +128,14 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = "@".concat(userName);
 	}
 
 	public Date getDateOfBirth() {

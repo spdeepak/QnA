@@ -1,6 +1,5 @@
 package com.deepaksp.qa.entity.interfaces;
 
-import java.util.List;
 import java.util.Set;
 
 import com.deepaksp.qa.entity.CommentDownvote;
@@ -36,9 +35,5 @@ public interface Comment<T> {
 	public Set<CommentDownvote> getDownvotes();
 
 	public void setDownvotes(Set<CommentDownvote> downvotes);
-
-	public List<T> getComments();
-
-	public void setComments(List<T> comments);
 
 }

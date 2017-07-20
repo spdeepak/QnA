@@ -8,8 +8,6 @@ alter table answer_upvotes drop foreign key FK6s89xawpek02tei30gixx625k
 alter table answer_upvotes drop foreign key FKhmf4hefb1c3tt23jvtgv5hs0g
 alter table answer_comment drop foreign key FKbi4ojf23mofyyc9wmmslub4ln
 alter table answer_comment drop foreign key FK87c9uh8328afrd7v20x4hcfar
-alter table answer_comment_comments drop foreign key FKe6a1wy9yfu903okkprqcv0h0
-alter table answer_comment_comments drop foreign key FKffqk75ufat4bc1j5jx4504138
 alter table answer_comment_downvotes drop foreign key FKfmk0s6e1j4rlsfdnpi9d21xit
 alter table answer_comment_downvotes drop foreign key FKanegnmu5rjk85v0i4p0qjlbhn
 alter table answer_comment_upvotes drop foreign key FKb66w350av6sdmvoeofi44wovw
@@ -33,8 +31,6 @@ alter table question_upvotes drop foreign key FKjs5yxd0fj0d3t77wgk1qmmcoc
 alter table question_upvotes drop foreign key FKermum9o3klcj20fr81r8cdwjt
 alter table question_comment drop foreign key FKgatho66t7ix04m6dothg6jaqh
 alter table question_comment drop foreign key FK5v1x6rdm2bocicjn0c5ndow8c
-alter table question_comment_comments drop foreign key FK2fybg0rlxyg12f7gh1189qmtn
-alter table question_comment_comments drop foreign key FKmcucu6kyqd75pfb9oo4haoayq
 alter table question_comment_downvotes drop foreign key FK51y698rsihtfi6b2pschm8hk6
 alter table question_comment_downvotes drop foreign key FKd5h3gk0fbeomwph3blsf5wigb
 alter table question_comment_upvotes drop foreign key FKk6jh6kkjd8ehq8c68r39w2nd5
@@ -56,7 +52,6 @@ drop table if exists answer_comments
 drop table if exists answer_downvotes
 drop table if exists answer_upvotes
 drop table if exists answer_comment
-drop table if exists answer_comment_comments
 drop table if exists answer_comment_downvotes
 drop table if exists answer_comment_upvotes
 drop table if exists answer_downvote
@@ -71,7 +66,6 @@ drop table if exists question_followers
 drop table if exists question_topics
 drop table if exists question_upvotes
 drop table if exists question_comment
-drop table if exists question_comment_comments
 drop table if exists question_comment_downvotes
 drop table if exists question_comment_upvotes
 drop table if exists question_downvote

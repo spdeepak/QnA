@@ -1,5 +1,6 @@
 package com.deepaksp.qa.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -19,6 +20,7 @@ public class Topic {
 
 	private String name;
 
+	@Column(columnDefinition = "TEXT")
 	private String description;
 
 	public long getId() {
