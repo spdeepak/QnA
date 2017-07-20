@@ -10,18 +10,24 @@
 	<div th:replace="fragments/header :: header"></div>
 	<div class="container">
 		<h1 th:text="${question.question}"></h1>
+		<p class="text-justify" th:text="${question.description}"></p>
 		<th:block th:each="t: ${question.topics}">
 			<span class="label label-primary" style="margin-right: 1px;"
 				th:text="${t.name}"></span>
 		</th:block>
-		<th:block th:if="${question.answers.list != null}"
-			th:each="a: ${question.answers}">
-			<span th:text="${a.answer}"></span>
-			<th:block th:if="${a.comments.list ! =null }"
-				th:each="c: ${a.comments}">
-				<span th:text="${c.comment}"></span>
+		<hr />
+		<div>
+			<th:block th:if="${not #lists.isEmpty(question.answers)}"
+				th:each="a: ${question.answers}">
+				<p th:inline="text"><strong>[[${a.user.firstName}]] [[${a.user.middleName}]] [[${a.user.lastName}]]</strong>, [[${a.user.description}]]</p>
+				<span th:text="${a.answer}"></span>
+				<th:block th:if="${not #lists.isEmpty(a.comments)}"
+					th:each="c: ${a.comments}">
+					<span th:text="${c.comment}"></span>
+				</th:block>
+				<hr />
 			</th:block>
-		</th:block>
+		</div>
 	</div>
 </body>
 
