@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
 
@@ -31,17 +32,24 @@ public class User {
 
 	private long version;
 
+	@NotNull
 	private String firstName;
 
 	private String middleName;
 
+	@NotNull
 	private String lastName;
+
+	@Column(length = 140)
+	private String description;
 
 	@Email
 	@Column(unique = true)
+	@NotNull
 	private String email;
 
 	@Temporal(TemporalType.DATE)
+	@NotNull
 	private Date dateOfBirth;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
@@ -97,6 +105,14 @@ public class User {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getEmail() {

@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -30,6 +31,9 @@ public class Question {
 	private long version;
 
 	private String question;
+
+	@Column(columnDefinition = "TEXT")
+	private String description;
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Answer> answers = new ArrayList<>();
@@ -77,6 +81,14 @@ public class Question {
 
 	public void setQuestion(String question) {
 		this.question = question;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public List<Answer> getAnswers() {
@@ -142,4 +154,5 @@ public class Question {
 	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
+
 }
